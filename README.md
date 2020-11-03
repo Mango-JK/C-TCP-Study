@@ -55,7 +55,6 @@ gcc -c -o main.o main.c
 > 기존의 컴파일 과정이 예제에서는 귀찮지 않습니다. 모든 c파일을 각각 컴파일해도 3번만 명령해주면 되니까요. 하지만 만약 하나의 실행파일을 생성하는데 필요한 c파일이 1000개라면..? 100개의 명령어가 필요합니다. 이러한 상황을 해결해주는 것이 바로 `make`와 `makefile`입니다!
 
 <hr/>
-
 ### make를 이용한 컴파일 과정
 
 그럼 이제 `Makefile`을 먼저 어떻게 만드는지 알아본 후 `make` 명령으로 위의 파일들을 컴파일 해봅시다.
@@ -82,7 +81,6 @@ gcc -c -o main.o main.c
 <center><image src="./images/makefile.PNG"></image></center>
 
 
-
 ### Makefile 작성 규칙
 
 > **목표파일** : 목표파일을 만드는데 필요한 **구성요소들**
@@ -102,7 +100,6 @@ gcc -c -o main.o main.c
 
 
 <center><image src="./images/makefile2.PNG"></image></center>
-
 여기서 **더미타겟**은 파일을 생성하지 않는 개념적인 타겟으로
 
 > $ make clean
@@ -118,8 +115,6 @@ gcc -c -o main.o main.c
 마치 C언어에서 **#define**을 하는 것과 비슷한 원리입니다.
 
 <center><image src="./images/macro.PNG"></image></center>
-
-
 
 **작성 규칙**
 
@@ -146,7 +141,6 @@ gcc -c -o main.o main.c
 ### Makefile 개선하기2 : 내부 매크로 사용
 
 <center><image src="./images/macro2.PNG"></image></center>
-
 내부 매크로를 사용하였더니 코드가 굉장히 단순해졌습니다!
 
 여기서 사용된 내부 매크로를 한번 살펴봅시다.
@@ -177,4 +171,3 @@ gcc -c -o main.o main.c
 > - 일일이 gcc 명령어를 안치고도 간단하면서 용이하게 컴파일을 진행할 수 있음
 
 <hr/>
-
