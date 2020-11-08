@@ -23,7 +23,6 @@ cc명령의 출력은 -o 옵션을 사용하면 다른 파일에 저장할 수�
 이 명령은 cc의 결과를 **a.out**이 아니라 **sea**에 바로 저장하게 한다.
 
 <hr/>
-
 #### `getchar()`
 
 : 키보드로부터 **한 문자를 읽어** 들여 배정하기 위해 사용한다.
@@ -46,4 +45,129 @@ cc명령의 출력은 -o 옵션을 사용하면 다른 파일에 저장할 수�
 
 
 
-### 
+#### 일차원 배열
+
+배열은 **일종의 집합**을 의미합니다. 지금까지 배운 것으론 변수 하나에는 하나의 값 밖에 담지 못했지만, 배열을 이용하면 하나의 변수에 여러 개의 값을 넣을 수 있게 됩니다.
+
+<br/>
+
+**배열 초기화하기**
+
+```c
+int main() {
+	int arr1[5] = {1, 33, 47, 102, 155}; // 선언과 동시에 초기화
+	int arr2[5] = {}; // 모두 0으로 초기화
+	int arr3[] = {11, 22, 33, 44}; // 배열 크기 4로 자동 초기화
+}
+```
+
+<br/>
+
+**배열의 주소**
+
+일반적으로 우리가 사용하는 변수들은 모두 메모리의 특정한 주소에 저장되어 있습니다. &가 주소값을 나타낸다고 했었던 것 기억하시나요? scanf를 사용할 때 주소값을 알려주기 위해 &를 사용한다고 했었는데요.
+
+각 변수들은 선언될 때 메모리에 무작위로 저장됩니다.
+
+<br/>
+
+#### Call by value & Call by reference
+
+#### `Call by value`
+
+기본적으로 C언어에서 지원 방식.
+
+함수에서 값을 복사해서 전달하는 방식으로, 인자로 전달되는 변수를 함수의 매개변수에 복사합니다.
+
+이렇게 복사되면 인자로 전달한 변수와는 별개의 변수가 되며, 매개변수를 변경해도 원래의 변수에 영향을 미치지 않습니다.
+
+```c
+#include <stdio.h>
+
+void swap(int a, int b) {
+    int temp;
+    
+    temp = a;
+    a = b;
+    b = temp;
+}
+
+int main(){
+    int a, b;
+    
+    a = 10;
+    b = 20;
+    
+    printf("swap 전 : %d %d \n", a, b);
+    swap(a, b);
+    printf("swap 후 : %d %d \n", a, b);
+    return 0;
+}
+```
+
+> swap 전 : 10 20
+>
+> swap 후 : 10 20
+
+<br/>
+
+#### `call by reference`
+
+함수에서 값을 전달하는 대신 주소값을 전달하는 방식을 **call by reference**라고 합니다.
+
+
+
+```c
+#include <stdio.h>
+
+void swap(int *a, int *b) {
+    int temp;
+    
+    temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main(){
+    int a, b;
+    
+    a = 10;
+    b = 20;
+    
+    printf("swap 전 : %d %d \n", a, b);
+    swap(&a, &b);
+    printf("swap 후 : %d %d \n", a, b);
+    return 0;
+}
+```
+
+> swap 전 : 10 20
+>
+> swap 후 : 20 10
+
+<hr/>
+
+#### 구조체 포인터와 ->
+
+```c
+#include <stdio.h>
+
+typedef struct {
+    int s_id;
+    int age;
+} Student;
+
+int main(){
+    Strudent goorm;
+    Student *ptr;
+    
+    ptr = &goorm;
+    
+    (*ptr).s_id = 1004;
+    ptr->age = 20;
+    
+    printf("goorm의 학번 : %d, 나이 : %d\n", goorm.s_id, goorm.age)
+}
+```
+
+ <hr/>
