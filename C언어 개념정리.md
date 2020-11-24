@@ -146,7 +146,6 @@ int main(){
 > swap 후 : 20 10
 
 <hr/>
-
 #### 구조체 포인터와 ->
 
 ```c
@@ -171,3 +170,36 @@ int main(){
 ```
 
  <hr/>
+
+#### 조건부 컴파일
+
+전처리기는 조건부 컴파일을 위한 지시자를 가지고 있다.
+
+>  **#if** 와 **#endif** 사이의 코드가 컴파일되기 위해서는 **#if** 다음의 상수 수식이 <u>영이 아닌 값(참)</u>을 가져야 한다.
+>
+> **#ifdef**나 **#if defined**와 **#endif** 사이의 코드가 컴파일 되기 위해서는 #ifdef나 #if defined 다음의 <u>identifier가 이미 #define으로 정의되어 있어야 한다</u>.
+>
+> 
+>
+> 그리고 **#ifndef**와 **#endif** 사이의 코드가 컴파일 되기 위해서는 **#ifndef** 다음의 **identifier**가 <u>현재 정의되어 있지 않아야 한다</u>.
+
+< `#if - #elif - #endif ` 구조도 가능하다.
+
+```c
+#include "everything.h"
+#undef PIE
+#define PIE "I like apple."
+
+주석 대신
+statements
+#if 0
+more statements
+#endif
+```
+
+
+
+
+
+
+
